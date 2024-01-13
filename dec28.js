@@ -36,12 +36,10 @@ const target = 9
 //Palindrome Number
 //Given an integer x, return true if x is a palindrome , and false otherwise.
 const Palindrome = function(x){
-    let str = x.toString()
-    // console.log(str)
-    for(let i=str.length-1; i>0; i--){
-        // console.log(str.length)
-        console.log(str[i])
-    }
+    const str = x.toString()
+    const reversedArr = str.split('').reverse()
+    const reversed = reversedArr.join('')
+    return str === reversed
 }
 let x = 121
 console.log(Palindrome(x))
