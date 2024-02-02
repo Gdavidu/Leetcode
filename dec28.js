@@ -69,8 +69,13 @@ console.log(Palindrome(x))
 // strs[i] consists of only lowercase English letters.
 
 var longestCommonPrefix = function(strs) {
-    const shared = ''
-    for (let i=0; i<strs.length; i++){
-        // if()
+    let str = strs[0]
+    for (let word of strs){
+        while(word.indexOf(str) !== 0) {
+            str = str.slice(0,-1)
+            if (str === '') return ''
+        }
     }
+    return str
+   
 };
