@@ -27,3 +27,22 @@ var merge = function(nums1, m, nums2, n) {
         }
     }
 };
+
+//Remove element
+let i = 0;
+for (let j = 0; j < nums.length; j++) {
+    if (nums[j] !== val) {
+        nums[i] = nums[j];
+        i++;
+    }
+}
+return i;
+};    let i = 0;
+for (let j = 0; j < nums.length; j++) {
+    if (nums[j] !== val) {
+        nums[i] = nums[j];
+        i++;
+    }
+}
+return i;
+};
