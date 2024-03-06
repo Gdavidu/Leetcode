@@ -1,4 +1,31 @@
 //Merge Sorted Array
+//attempt
+var merge = function(nums1, m, nums2, n) {
+    let index2 = n-1;
+
+    for(let i=m+n-1; i>=0; i--){
+        // console.log(m)
+        if(m===0){
+            console.log('hit')
+            nums1[i]= nums2[index2]
+            index2--
+        }
+        if(nums1[i]<nums2[index2] && nums1[i-1]<nums2[index2]){
+        nums1[i]=nums2[index2]
+         index2--
+        }
+        else if(nums1[i-1]>nums2[index2]){
+            nums1[i] = nums1[i-1]
+            nums1[i-1] = nums2[index2]
+        }
+        if(nums1[i]!=0 && nums1[i-1]>nums1[i]){
+            let replace = nums1[i]
+            nums1[i]= nums1[i-1]
+            nums1[i-1] = replace
+        }
+    }
+    return nums1
+};
 
 var merge = function(nums1, m, nums2, n) {
 
