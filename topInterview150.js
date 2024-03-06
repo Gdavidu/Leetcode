@@ -1,5 +1,5 @@
 //Merge Sorted Array
-//attempt
+//attempt 1 passes 13/59
 var merge = function(nums1, m, nums2, n) {
     let index2 = n-1;
 
@@ -26,18 +26,20 @@ var merge = function(nums1, m, nums2, n) {
     }
     return nums1
 };
-
+//attempt2 passes 30/59
 var merge = function(nums1, m, nums2, n) {
-
-    for(let i=0; i<m*2; i++){
-        if(nums1[i]>=nums2[0]){
+    for(let i=0; i<m+n; i++){
+        if(nums1[i]==0){
+            nums1[i]=nums2[0]
+            nums2.shift()
+        }
+        else if(nums1[i]>=nums2[0]){
             nums1.splice(i,0,nums2[0])
-            nums2.pop()
-            i++
             nums1.pop()
+            nums2.shift()
+            console.log(nums1,nums2)
         }
     }
-
     return nums1
 };
 
