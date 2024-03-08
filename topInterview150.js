@@ -111,22 +111,7 @@ var removeElement = function(nums, val) {
         }
     }
 };
-// remove duplicates
-function removeDuplicates(nums) {
-    if (nums.length === 0) {
-        return 0;
-    }
 
-    let k = 1;
-    for (let i = 1; i < nums.length; i++) {
-        if (nums[i] !== nums[k - 1]) {
-            nums[k] = nums[i];
-            k++;
-        }
-    }
-
-    return k;
-}
 //majority element
 var majorityElement = function(nums) {
     const n = nums.length;
@@ -142,3 +127,13 @@ var majorityElement = function(nums) {
 };
 //test
 HELLO HELLO
+
+//remove duplicates (python)
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        j = 1
+        for i in range(1, len(nums)):
+            if nums[i] != nums[i - 1]:
+                nums[j] = nums[i]
+                j += 1
+        return j
