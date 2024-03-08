@@ -137,7 +137,7 @@ class Solution:
                 nums[j] = nums[i]
                 j += 1
         return j
-//valid parenthesis
+//find index of first occurence in string
 var strStr = function(haystack, needle) {
     let n = haystack.length;
     let m = needle.length;
@@ -154,4 +154,5 @@ var strStr = function(haystack, needle) {
         }
         if (found) return i;
     }
-    return 
+    return false;
+}
