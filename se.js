@@ -156,3 +156,5 @@ var strStr = function(haystack, needle) {
     }
     return false;
 }
+//majority element
+//attempt 1
