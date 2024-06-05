@@ -49,8 +49,6 @@ console.log(Palindrome(x))
 
 // If there is no common prefix, return an empty string "".
 
-
-
 // Example 1:
 
 // Input: strs = ["flower","flow","flight"]
@@ -77,5 +75,5 @@ var longestCommonPrefix = function(strs) {
         }
     }
     return str
-   
+
 };
