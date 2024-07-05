@@ -75,3 +75,12 @@ class Solution(object):
         nums[:] = set(nums)
         nums.sort()
         return len(nums)
+# Solve
+class Solution(object):
+    def removeElement(self, nums, val):
+        pointer = len(nums) -1
+        while pointer >= 0:
+            if nums[pointer] == val:
+                nums.pop(pointer)
+            pointer-=1
+        return len(nums)
