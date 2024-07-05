@@ -62,3 +62,16 @@ class Solution(object):
                 nums1[c] = nums2[b]
                 b-= 1
             c-=1
+
+# Remove Duplicates from Sorted Array
+# Solution using python built-in methods:
+class Solution(object):
+    def removeDuplicates(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+
+        nums[:] = set(nums)
+        nums.sort()
+        return len(nums)
