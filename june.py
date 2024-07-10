@@ -118,3 +118,24 @@ class Solution(object):
                 k+=1
         print nums
         return k
+# Given an array nums of size n, return the majority element.
+# The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+class Solution(object):
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        tracker = defaultdict(int)
+        for number in nums:
+                tracker[number] += 1
+        maxi = max(tracker.values())
+        for key,value in tracker.items():
+            if value == maxi:
+                return key
+# *Key notes: defaultdict(int) creates a dict that automatically assigns a default value of '0'
+# for every nonexistant key, meaning you do not have to check a keys existence to increment it.
+# This is a powerful tool for counting or accumulating values in a more succinct way.
+# Additionally, this problem was a great review of remembering how to iterate over a dict
+# using a comma in the notation to get both key and value from dict.items() sort of in a
+# destructuring fashion
