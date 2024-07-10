@@ -84,3 +84,37 @@ class Solution(object):
                 nums.pop(pointer)
             pointer-=1
         return len(nums)
+# Merge Sorted Array
+class Solution(object):
+    def merge(self, nums1, m, nums2, n):
+        """
+        :type nums1: List[int]
+        :type m: int
+        :type nums2: List[int]
+        :type n: int
+        :rtype: None Do not return anything, modify nums1 in-place instead.
+        """
+        for j in range(n):
+            nums1[m+j] = nums2[j]
+        nums1.sort()
+#  Remove Duplicates from Sorted Array II
+class Solution(object):
+    def removeDuplicates(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        currentNum = 0
+        count = 0
+        k = 0
+        for i in range(len(nums)):
+            if nums[i] == currentNum:
+                count+=1
+            if nums[i] != currentNum:
+                currentNum = nums[i]
+                count=1
+            if count<=2:
+                nums[k] = nums[i]
+                k+=1
+        print nums
+        return k
