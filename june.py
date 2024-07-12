@@ -139,3 +139,16 @@ class Solution(object):
 # Additionally, this problem was a great review of remembering how to iterate over a dict
 # using a comma in the notation to get both key and value from dict.items() sort of in a
 # destructuring fashion
+
+# Longest Common Prefix
+class Solution(object):
+    def longestCommonPrefix(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+        pointer = 0
+        prefix = strs[0][0]
+        print prefix
+        for i in range(len(strs)):
+            if prefix != strs[i][i]:
