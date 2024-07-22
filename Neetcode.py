@@ -28,3 +28,5 @@ class Solution:
 #             hashset.add(n)
 #         return False
 # Notes:
+# Using a hashmap you sacrifice space complexity for an O(n) time complexity. My solution is a O(nlog(n)) but by using a hashsetto chekc values against, you achieve a O(n) time comp and a O(n) space comp as opposed to the prev O(1) space comp.
+# This solution entails checking whether the value is in the hashset and inputting it in the hashset if it isnt
