@@ -60,3 +60,14 @@ class Solution:
 #Notes:
 # used a hashmap again but new concept: the get method for sets that checks whether the calue exists or sets the default value as 0. Kind of remember this concept but in a different syntax, gonna review some of my old leetcode solutions. Back
 # to the solution: then using any of the two sets, check each value against the set of the other. I believe this means that hashsets are sorted? Nevermind its checking whether or not get returns a value cool.
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        firstInd = 0
+        secondInd
+        for i in range(len(nums)):
+            if (target-nums[i]) in nums:
+                firstInd = i
+            if firstInd:
+                if nums[i] == (target- nums[firstInd]):
+                    secondInd = i
+        return [firstInd, secondInd]
