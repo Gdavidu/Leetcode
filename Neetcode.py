@@ -75,3 +75,15 @@ class Solution:
         print(numsSplit)
         secondInd = numsSplit.index(target-nums[firstInd])
         return [firstInd, secondInd+indDiff]
+# Theirs:
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        prevMap = {}  # val -> index
+
+        for i, n in enumerate(nums):
+            diff = target - n
+            if diff in prevMap:
+                return [prevMap[diff], i]
+            prevMap[n] = i
+# Notes Can use sets with the key and value being anything i.e the key can be the value of an element of i and the value can be index. Ik this but somehow wasnt first instinct on this problem
+# Powerful use of enumerate() which returns a tuple of the index,value from nums or any type of iterable. Use of i,n to unpack the tuple thats returned
