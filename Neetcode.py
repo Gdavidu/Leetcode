@@ -87,3 +87,32 @@ class Solution:
             prevMap[n] = i
 # Notes Can use sets with the key and value being anything i.e the key can be the value of an element of i and the value can be index. Ik this but somehow wasnt first instinct on this problem
 # Powerful use of enumerate() which returns a tuple of the index,value from nums or any type of iterable. Use of i,n to unpack the tuple thats returned
+
+# Anagram Groups:
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        ans = defaultdict(list)
+        sortlist = []
+        for str in strs:
+            charLis = sorted(str)
+            sortstr = ''.join(charLis)
+            sortlist.append(sortstr)
+        # print (sortlist)
+        for i,n in enumerate(sortlist):
+                ans[n].append(strs[i])
+        return ans.values()
+# Their Sol:
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        ans = defaultdict(list)
+
+        for s in strs:
+            count = [0] * 26
+            for c in s:
+                count[ord(c) - ord("a")] += 1
+            ans[tuple(count)].append(s)
+        return ans.values()
+# Notes: Use of a dict thats value is a list, learned to just append the value to a key because either way you are appending something to a new key or an existing.
+# Their solution made use of a list of 0s and would increment the index of each 0 if the ascii value matched. They ensured the ascii value would match up to an index by subtracting each ascii value by the ascii val of a.
+#  This made their solution a time complexity of m*n rather than my sol of m*nlogn because of the sort i employed. All in all, very creative way of making use of the key/value of a hashmap/set
+# An additional note is that a list cannot be used as a key in sets but a tuple can in python
