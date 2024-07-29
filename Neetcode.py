@@ -116,3 +116,25 @@ class Solution:
 # Their solution made use of a list of 0s and would increment the index of each 0 if the ascii value matched. They ensured the ascii value would match up to an index by subtracting each ascii value by the ascii val of a.
 #  This made their solution a time complexity of m*n rather than my sol of m*nlogn because of the sort i employed. All in all, very creative way of making use of the key/value of a hashmap/set
 # An additional note is that a list cannot be used as a key in sets but a tuple can in python
+# Roman to Integer
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        m = {
+            'I': 1,
+            'V': 5,
+            'X': 10,
+            'L': 50,
+            'C': 100,
+            'D': 500,
+            'M': 1000
+        }
+
+        ans = 0
+
+        for i in range(len(s)):
+            if i < len(s) - 1 and m[s[i]] < m[s[i+1]]:
+                ans -= m[s[i]]
+            else:
+                ans += m[s[i]]
+
+        return ans
