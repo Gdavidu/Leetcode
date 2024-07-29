@@ -138,3 +138,29 @@ class Solution:
                 ans += m[s[i]]
 
         return ans
+# Way better Roman to Integer code:
+class Solution(object):
+    def romanToInt(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        map = {
+            'I':1,
+            'V':5,
+            'X':10,
+            'L':50,
+            'C':100,
+            'D':500,
+            'M':1000
+        }
+        total = 0
+        prev = 0
+        for symbol in s[::-1]:
+            if map[symbol] >= prev:
+                total += map[symbol]
+            else:
+                total -= map[symbol]
+            prev = map[symbol]
+        return total
+    # Notes: By iterating backwards you avoid the potential range error of the i+1 approach. The use of a map is a little new to me but its just like an object in JS. Iterate over a string backwards using the notation [::-1] where with no 'start', 'stop' but with a -1 step indicated, the list is just reversed. 
