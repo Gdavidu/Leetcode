@@ -116,6 +116,8 @@ class Solution:
 # Their solution made use of a list of 0s and would increment the index of each 0 if the ascii value matched. They ensured the ascii value would match up to an index by subtracting each ascii value by the ascii val of a.
 #  This made their solution a time complexity of m*n rather than my sol of m*nlogn because of the sort i employed. All in all, very creative way of making use of the key/value of a hashmap/set
 # An additional note is that a list cannot be used as a key in sets but a tuple can in python
+# *every loop creates a new 26-long list of 0s that will uniquely identify the letters in words by incrementing certain indices by the ascii value diff between the char and the ascii value of 'a'
+
 # Roman to Integer
 class Solution:
     def romanToInt(self, s: str) -> int:
@@ -163,4 +165,22 @@ class Solution(object):
                 total -= map[symbol]
             prev = map[symbol]
         return total
-    # Notes: By iterating backwards you avoid the potential range error of the i+1 approach. The use of a map is a little new to me but its just like an object in JS. Iterate over a string backwards using the notation [::-1] where with no 'start', 'stop' but with a -1 step indicated, the list is just reversed. 
+    # Notes: By iterating backwards you avoid the potential range error of the i+1 approach. The use of a map is a little new to me but its just like an object in JS. Iterate over a string backwards using the notation [::-1] where with no 'start', 'stop' but with a -1 step indicated, the list is just reversed.
+# Top K elements in list *got to hashmap part but could not figure out
+# Sol
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        count={}
+        freq = [[] for i in range(len(nums)+1)]
+        for num in nums:
+            count[num] = 1 + count.get(num,0)
+        for num, c in count.items():
+            freq[c].append(num)
+        print(count, freq)
+        res = []
+        for i in range(len(freq) - 1, 0, -1):
+            for n in freq[i]:
+                res.append(n)
+                if len(res) == k:
+                    return res
+# Notes Figured out that I needed a hashmap to count the occurences of each value and used .items to access them but past that, I went a bad route of trying to sort and push the keys into an ans list which was time complexity wasteful and would not work. The solution once again was multiple arrays inside an array in which each array represented how frequent each value would occur, so it autosorted. The efficiency in this solution is in how it caps te length of the list we need to sort by using the length of the input list (since the freq will never exceed the input list )
