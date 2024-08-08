@@ -184,3 +184,28 @@ class Solution:
                 if len(res) == k:
                     return res
 # Notes Figured out that I needed a hashmap to count the occurences of each value and used .items to access them but past that, I went a bad route of trying to sort and push the keys into an ans list which was time complexity wasteful and would not work. The solution once again was multiple arrays inside an array in which each array represented how frequent each value would occur, so it autosorted. The efficiency in this solution is in how it caps te length of the list we need to sort by using the length of the input list (since the freq will never exceed the input list )
+
+# String encode and decode
+class Solution:
+
+    def encode(self, strs: List[str]) -> str:
+        res = ""
+        for s in strs:
+            res += str(len(s)) + "#" + s
+        return res
+
+    def decode(self, s: str) -> List[str]:
+        res = []
+        i = 0
+
+        while i < len(s):
+            j = i
+            while s[j] != '#':
+                j += 1
+            length = int(s[i:j])
+            i = j + 1
+            j = i + length
+            res.append(s[i:j])
+            i = j
+
+        return res
