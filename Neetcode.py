@@ -209,3 +209,55 @@ class Solution:
             i = j
 
         return res
+# Daily Challenge: Magic Squares In Grid
+class Solution(object):
+    def magicCheck(self, square):
+        if len(set(square)) != 9:
+            return False
+        if min(square)<1 or max(square)>9:
+            return False
+        sum1 = square[0] + square[1] + square[2]
+        # rows
+        if square[0] + square[1] + square[2] != sum1:
+            return False
+
+        if square[3] + square[4] + square[5] != sum1:
+            return False
+
+        if square[6] + square[7] + square[8] != sum1:
+            return False
+
+        # columns
+        if square[0] + square[3] + square[6] != sum1:
+            return False
+
+        if square[1] + square[4] + square[7] != sum1:
+            return False
+
+        if square[2] + square[5] + square[8] != sum1:
+            return False
+
+        # diagonals
+        if square[0] + square[4] + square[8] != sum1:
+            return False
+
+        if square[2] + square[4] + square[6] != sum1:
+            return False
+
+        return True
+    def numMagicSquaresInside(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
+        res = 0
+        c = len(grid)
+        r = len(grid[0])
+        if c<3 or r<3:
+            return res
+        for i in range(c-2):
+            for j in range(r-2):
+                if self.magicCheck(grid[i][j:j+3]+grid[i+1][j:j+3]+grid[i+2][j:j+3]):
+                    # print(grid[i][j:j+3]+grid[i+1][j:j+3]+grid[i+2][j:j+3])
+                    res +=1
+        return res
