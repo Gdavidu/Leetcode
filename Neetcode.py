@@ -261,3 +261,13 @@ class Solution(object):
                     # print(grid[i][j:j+3]+grid[i+1][j:j+3]+grid[i+2][j:j+3])
                     res +=1
         return res
+# Notes: Definitely a trip for me conceptualizing and something I hope will improve
+# over more problems. Got stuck trying to figure out how to iterate over a 9 window
+# square of the grid and was able to attack the problem through a double for loop
+# suggested by Sat. If the length of the row is the boundary of the index +1, a range
+# of len(row)-2 will start from 0 and only go to an index +3 that is in range of the
+# input grid. ex.) a grid row w length 6 will have a range(4)-> 0,1,2,3 and 3,
+# included, will only require the last index 5 to create a 3x3. An additional tool
+# I learned was how to create a separate method for modularity and readability. A
+# huge brunt of my brute force is stuffed into the magicCheck method and separates
+# my grid parsing from my magic square checking.
