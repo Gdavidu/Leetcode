@@ -338,3 +338,17 @@ class Solution:
 
         return True
 
+# Design a class that:
+# 1. can addd a value(no dupes)
+# 2. can remove a value
+# 3. gets a random value from already inserted values with equal probability
+
+class Store:
+    def __init__(self):
+        self.map = set()
+    def insert(self, value):
+        self.map.add(value)
+    def remove(self,value):
+        self.map.remove(value)
+    def getRand(self):
+        return random.choice(list(map))
