@@ -352,3 +352,9 @@ class Store:
         self.map.remove(value)
     def getRand(self):
         return random.choice(list(map))
+# Is Palindrome
+# Note: cheat way using built-in python functions such as string.isalnum() to filter out nonalphanumeric characters
+# string.lower() to convert to lowercase
+# Notes on proper Solution: Two pointers, one at each side. stop conditional on whther the pointers have met or passed each other.
+# Use ASCII symbol to filter out nonalphanumerics in a helper function that returns a bool if the ord(char) is between the values for ord(A-Z,a-z, or 0-9)
+# 
