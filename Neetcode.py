@@ -409,3 +409,35 @@ class Solution:
 # is created each time since strs are immutable. This results in a higher usage of memory
 # and in the worst case a time complexity that comes closer to O^(n^2)
 
+# Summary according to chatgpt:
+# Time Efficiency: The first implementation (two-pointer approach) is generally faster in practice due to its O(n) time complexity without the hidden costs of string concatenation.
+# Space Efficiency: The first implementation is more memory-efficient with O(1) space complexity, whereas the second implementation requires O(n) space to store the filtered and reversed strings.
+# 2nd Run at Two Int Sum w 1-indexed:
+# My Sol:
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        for i in range(len(numbers)):
+            for e in range(len(numbers)):
+                if numbers[e] != numbers[i]:
+                    if target == numbers[i]+numbers[e] and i<e:
+                        return [i+1,e+1]
+        return
+# Notes: Most def not O(1)
+# Their two pointer solution:
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        l, r = 0, len(numbers)-1
+        while l<r:
+                currSum = numbers[l] + numbers[r]
+
+                if currSum < target:
+                    l +=1
+                elif currSum> target:
+                    r-=1
+                else:
+                    return [l+1, r+1]
+# Notes this seems to be a better acting solution because it can process bigger arrays without the use of extra space
+# Looking at this solution, its evident that it takes adv of the alrdy sorted input array.
+# Still trying to digest the solution so Ill write out what y understanding of it is before watching the video:
+# while the left and right pointer do not coincide: the currSum is measured against the target and the index moves accordingly.
+#  I guess since the array is sorted the diff btwn the target and currSum will always be the same as one step of the input arr
