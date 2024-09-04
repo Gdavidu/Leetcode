@@ -357,4 +357,55 @@ class Store:
 # string.lower() to convert to lowercase
 # Notes on proper Solution: Two pointers, one at each side. stop conditional on whther the pointers have met or passed each other.
 # Use ASCII symbol to filter out nonalphanumerics in a helper function that returns a bool if the ord(char) is between the values for ord(A-Z,a-z, or 0-9)
-# 
+# My solution (less efficient with memory/storage because of the extra variables):
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        filtered = self.alphaNumFilter(s)
+        reverse = ''
+        for i in range(len(filtered)-1, -1, -1):
+                # print(i)
+                reverse+= filtered[i]
+        print(reverse)
+        # print(self.alphaNumFilter(s), self.alphaNumFilter(reverse))
+        return reverse == filtered
+    def alphaNumFilter(self, word: str):
+        res = ''
+        for i in word:
+            if i.isalnum():
+                res+= i.lower()
+        return res
+# Notes: Could have saved major time by using str[::-1] to obtain the reversed str but also learned how to use range(starting:end:step)
+# refreshing the face that the starting point for range() is inclusive and the end is exclusive.
+# Their Suboptimal solution:
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        res = ''
+        for c in s:
+            if c.isalnum():
+                res += c.lower()
+        return res == res[::-1]
+# Notes: Way simpler than mine and completely gaps the way I approached the problem
+
+# Thier Optimal SOlution that is peak memory conservative and minimal time complexity:
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        l, r = 0, len(s) - 1
+
+        while l < r:
+            while l < r and not self.alphaNum(s[l]):
+                l += 1
+            while r > l and not self.alphaNum(s[r]):
+                r -= 1
+            if s[l].lower() != s[r].lower():
+                return False
+            l, r = l + 1, r - 1
+        return True
+
+    def alphaNum(self, c):
+        return (ord('A') <= ord(c) <= ord('Z') or
+                ord('a') <= ord(c) <= ord('z') or
+                ord('0') <= ord(c) <= ord('9'))
+# Notes: Since the suboptimal solution concatenates each char to the string, a new str
+# is created each time since strs are immutable. This results in a higher usage of memory
+# and in the worst case a time complexity that comes closer to O^(n^2)
+
