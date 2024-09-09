@@ -441,3 +441,38 @@ class Solution:
 # Still trying to digest the solution so Ill write out what y understanding of it is before watching the video:
 # while the left and right pointer do not coincide: the currSum is measured against the target and the index moves accordingly.
 #  I guess since the array is sorted the diff btwn the target and currSum will always be the same as one step of the input arr
+
+# 3Sum
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        nums.sort()
+
+        for i, a in enumerate(nums):
+            if a > 0:
+                break
+
+            if i > 0 and a == nums[i - 1]:
+                continue
+
+            l, r = i + 1, len(nums) - 1
+            while l < r:
+                threeSum = a + nums[l] + nums[r]
+                if threeSum > 0:
+                    r -= 1
+                elif threeSum < 0:
+                    l += 1
+                else:
+                    res.append([a, nums[l], nums[r]])
+                    l += 1
+                    r -= 1
+                    while nums[l] == nums[l - 1] and l < r:
+                        l += 1
+
+        return res
+# Notes: hard to trace this one, not understanding why a>0 would constitute breaking out of the initial for-loop
+#  Everything else makes sense: the initial for loop to determine whether to skip a duplicate with the key word 'continue'
+# which I learned skips the reamining code in a loop and proceeds to the next iteration of the loop
+# Since the list is sorted, and the for loop checks the prev index, u ensure the a is a unique number
+# with the a and its index, u then set left and right and proceed w threesome like twosum except you need
+# to account for duplicates on the left side still too with the same logic of the prior for loop
