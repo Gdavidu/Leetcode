@@ -492,4 +492,34 @@ class Solution:
                 longest = max(length, longest)
         return longest
     # notes: Sets ensure you do not need to loop over duplicate val
-    # 
+
+# Binary Search
+# Mine:
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        if target not in nums:
+            return -1
+        index = math.floor(len(nums)/2)
+        while index>=0 and index<len(nums):
+            if target == nums[index]:
+                return index
+            elif target > nums[index]:
+                index+=1
+            elif target < nums[index]:
+                index-=1
+# Theirs:
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        l, r = 0, len(nums) - 1
+
+        while l <= r:
+            m = l + ((r - l) // 2)  # (l + r) // 2 can lead to overflow
+            if nums[m] > target:
+                r = m - 1
+            elif nums[m] < target:
+                l = m + 1
+            else:
+                return m
+        return -1
+# Notes: Theirs also makes use of a search from the middle as well but doesnt use the floor function. Probably more efficient
+
