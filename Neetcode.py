@@ -476,3 +476,20 @@ class Solution:
 # Since the list is sorted, and the for loop checks the prev index, u ensure the a is a unique number
 # with the a and its index, u then set left and right and proceed w threesome like twosum except you need
 # to account for duplicates on the left side still too with the same logic of the prior for loop
+
+# longest consecutive seq:
+# Solve in O(n) time
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        numSet = set(nums)
+        longest = 0
+
+        for n in numSet:
+            if (n - 1) not in numSet:
+                length = 1
+                while (n + length) in numSet:
+                    length += 1
+                longest = max(length, longest)
+        return longest
+    # notes: Sets ensure you do not need to loop over duplicate val
+    # 
