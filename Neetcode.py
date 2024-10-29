@@ -522,4 +522,32 @@ class Solution:
                 return m
         return -1
 # Notes: Theirs also makes use of a search from the middle as well but doesnt use the floor function. Probably more efficient
-
+# 3sum
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+    # No duplicate triplets so push into a data structure that does not allow duplicates
+    # Need to find a datastructure that can detect duplicates in lists
+        # sample,sample2 = [1,0,-2], [1,0,2]
+        # print(sample == sample2)
+    # return triplet lists inside a list
+        res = []
+    # sort so that can easily apply pointers
+        # sorted = nums.sort()
+        # print(sorted)
+    # set pointers:
+        start = 0
+        end = len(nums)-1
+    # while loop, end condition: pointers meeting:
+        while start < end:
+            sum = nums[start] + nums[end]
+            print('sum: ', sum)
+            if (sum) in nums:
+                point = [nums[start], nums[end], nums.index(sum)]
+                print('point: ', point)
+                if point not in res:
+                    res.append(point)
+                start += 1
+            else:
+                end-=1
+        return res
+# completely missed reading what output they wanted (attempt1)
